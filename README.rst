@@ -8,11 +8,29 @@ Awaitable mocks for async code.
    :target: https://github.com/ambv/black
       :alt: Once you go Black...
 
+.. image:: https://travis-ci.org/timsavage/asyncmock.svg?branch=master
+    :target: https://travis-ci.org/timsavage/asyncmock
+
+.. image:: https://img.shields.io/pypi/l/asyncmock.svg
+    :target: https://pypi.python.org/pypi/asyncmock
+
+.. image:: https://img.shields.io/pypi/pyversions/asyncmock.svg
+    :target: https://pypi.python.org/pypi/asyncmock
+
+.. image::  https://img.shields.io/pypi/status/asyncmock.svg
+    :target: https://pypi.python.org/pypi/asyncmock
+
+.. image:: https://img.shields.io/pypi/implementation/asyncmock.svg
+    :target: https://pypi.python.org/pypi/asyncmock
+
+
 
 Installation
 ============
 
-Install using *pip*::
+Install using *pip*:
+
+.. code-block:: bash
 
     pip install asyncmock
 
@@ -20,7 +38,9 @@ Install using *pip*::
 Usage
 =====
 
-Async Mock is designed as a drop in replacement for a `Mock` object eg::
+Async Mock is designed as a drop in replacement for a `Mock` object eg:
+
+.. code-block:: python
 
     my_mock = AsyncMock()
 
@@ -29,7 +49,9 @@ Async Mock is designed as a drop in replacement for a `Mock` object eg::
     my_mock.assert_called_with("foo", bar=123)
 
 
-This also works with nested methods::
+This also works with nested methods:
+
+.. code-block:: python
 
     my_mock = AsyncMock()
 
@@ -40,7 +62,9 @@ This also works with nested methods::
 
 Side effects, return values can also be awaited.
 
-Including a non-awaitable item::
+Including a non-awaitable item:
+
+.. code-block:: python
 
     my_mock = AsyncMock()
 
@@ -58,7 +82,9 @@ PyTest Example
 These examples use `pytest <https://docs.pytest.org/en/latest/>`_ along with the
 `pytest-asyncio <https://github.com/pytest-dev/pytest-asyncio>`_ plugin.
 
-Generating an exception::
+Generating an exception:
+
+.. code-block:: python
 
     @pytest.mark.asyncio
     async def test_raise_exception():

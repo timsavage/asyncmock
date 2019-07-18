@@ -23,6 +23,8 @@ Awaitable mocks for async code.
 .. image:: https://img.shields.io/pypi/implementation/asyncmock.svg
     :target: https://pypi.python.org/pypi/asyncmock
 
+The package specifically only extends `mock <https://mock.readthedocs.io/en/latest/>`_
+and not any other part of unittest.
 
 
 Installation
@@ -76,7 +78,7 @@ This can also be provided as an init argument, the `not_async` argument is not
 inherited by sub-mocks.
 
 
-PyTest Example
+pytest Example
 ==============
 
 These examples use `pytest <https://docs.pytest.org/en/latest/>`_ along with the

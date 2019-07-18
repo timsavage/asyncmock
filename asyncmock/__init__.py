@@ -23,9 +23,9 @@ version_info = tuple(int(p) for p in __version__.split("."))
 
 
 class AsyncCallableMixin(CallableMixin):
-    def __init__(self, *, not_async=False, **kwargs):
-        super().__init__(**kwargs)
-        self.not_async = not_async
+    def __init__(_mock_self, not_async=False, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        _mock_self.not_async = not_async
 
     def __call__(_mock_self, *args, **kwargs):
         # can't use self in-case a function / method we are mocking uses self

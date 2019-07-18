@@ -41,6 +41,14 @@ async def test_async__nested_call():
     mock.my_method.assert_called_with("foo", 123, bar="eek")
 
 
+@pytest.mark.asyncio
+async def test_async_context_manager():
+    mock = asyncmock.AsyncMock()
+
+    async with mock as x:
+        assert x is mock
+
+
 def test_not_async():
     mock = asyncmock.AsyncMock(not_async=True)
 

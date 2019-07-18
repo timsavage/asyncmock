@@ -2,6 +2,10 @@ from mock import *
 from .__version__ import __version__
 
 __all__ = (
+    "AsyncMock",
+    "AsyncCallableMixin",
+    "__version__",
+    "version_info",
     "Mock",
     "MagicMock",
     "patch",

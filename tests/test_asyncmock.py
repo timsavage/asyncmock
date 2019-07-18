@@ -14,12 +14,21 @@ async def test_async():
 
 @pytest.mark.asyncio
 async def test_async__with_side_effect():
-    mock = asyncmock.AsyncMock()
-    mock.side_effect = KeyError
+    mock = asyncmock.AsyncMock(side_effect=KeyError)
 
     with pytest.raises(KeyError):
         await mock("foo", 123, bar="eek")
 
+    mock.assert_called_with("foo", 123, bar="eek")
+
+
+@pytest.mark.asyncio
+async def test_async__return_value():
+    mock = asyncmock.AsyncMock(return_value="hi")
+
+    actual = await mock("foo", 123, bar="eek")
+
+    assert actual == "hi"
     mock.assert_called_with("foo", 123, bar="eek")
 
 

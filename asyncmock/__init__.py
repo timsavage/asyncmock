@@ -2,10 +2,10 @@ from mock import *
 from .__version__ import __version__
 
 __all__ = (
-    "AsyncMock",
-    "AsyncCallableMixin",
     "__version__",
     "version_info",
+    "AsyncMock",
+    "AsyncCallableMixin",
     "Mock",
     "MagicMock",
     "patch",
@@ -30,6 +30,7 @@ class AsyncCallableMixin(CallableMixin):
     def __init__(_mock_self, not_async=False, *args, **kwargs):
         super().__init__(*args, **kwargs)
         _mock_self.not_async = not_async
+        _mock_self.aenter_return_value = _mock_self
 
     def __call__(_mock_self, *args, **kwargs):
         # can't use self in-case a function / method we are mocking uses self
@@ -45,6 +46,12 @@ class AsyncCallableMixin(CallableMixin):
                 return _mock_self._mock_call(*args, **kwargs)
 
             return wrapper()
+
+    async def __aenter__(_mock_self):
+        return _mock_self.aenter_return_value
+
+    async def __aexit__(_mock_self, exc_type, exc_val, exc_tb):
+        pass
 
 
 class AsyncMock(AsyncCallableMixin, NonCallableMock):

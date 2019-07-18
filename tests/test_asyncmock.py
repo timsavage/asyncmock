@@ -1,0 +1,49 @@
+import pytest
+
+import asyncmock
+
+
+@pytest.mark.asyncio
+async def test_async():
+    mock = asyncmock.AsyncMock()
+
+    await mock("foo", 123, bar="eek")
+
+    mock.assert_called_with("foo", 123, bar="eek")
+
+
+@pytest.mark.asyncio
+async def test_async__with_side_effect():
+    mock = asyncmock.AsyncMock()
+    mock.side_effect = KeyError
+
+    with pytest.raises(KeyError):
+        await mock("foo", 123, bar="eek")
+
+    mock.assert_called_with("foo", 123, bar="eek")
+
+
+@pytest.mark.asyncio
+async def test_async__nested_call():
+    mock = asyncmock.AsyncMock()
+
+    await mock.my_method("foo", 123, bar="eek")
+
+    mock.my_method.assert_called_with("foo", 123, bar="eek")
+
+
+def test_not_async():
+    mock = asyncmock.AsyncMock(not_async=True)
+
+    mock("foo", 123, bar="eek")
+
+    mock.assert_called_with("foo", 123, bar="eek")
+
+
+def test_not_async__nested_call():
+    mock = asyncmock.AsyncMock()
+
+    mock.my_method.not_async = True
+    mock.my_method("foo", 123, bar="eek")
+
+    mock.my_method.assert_called_with("foo", 123, bar="eek")

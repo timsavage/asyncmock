@@ -23,8 +23,9 @@ Awaitable mocks for async code.
 .. image:: https://img.shields.io/pypi/implementation/asyncmock.svg
     :target: https://pypi.python.org/pypi/asyncmock
 
-The package specifically only extends `mock <https://mock.readthedocs.io/en/latest/>`_
-and not any other part of unittest.
+The package specifically only extends mock_ and not any other part of unittest.
+
+.. _mock: https://mock.readthedocs.io/en/latest/
 
 
 Installation
@@ -40,7 +41,7 @@ Install using *pip*:
 Usage
 =====
 
-Async Mock is designed as a drop in replacement for a `Mock` object eg:
+Async Mock is a drop in replacement for a `Mock` object eg:
 
 .. code-block:: python
 
@@ -62,7 +63,7 @@ This also works with nested methods:
     my_mock.my_method.assert_called_with("foo", bar=123)
 
 
-Side effects, return values can also be awaited.
+Side effects and return values can also be awaited.
 
 Including a non-awaitable item:
 
@@ -74,15 +75,18 @@ Including a non-awaitable item:
     my_mock.my_method("foo", bar=123)
 
 
-This can also be provided as an init argument, the `not_async` argument is not
-inherited by sub-mocks.
+The `not_async` option can also be provided as an init argument. The `not_async` 
+argument is not inherited by sub-mocks.
 
 
 pytest Example
 ==============
 
-These examples use `pytest <https://docs.pytest.org/en/latest/>`_ along with the
-`pytest-asyncio <https://github.com/pytest-dev/pytest-asyncio>`_ plugin.
+These examples use pytest_ along with the pytest-asyncio_ plugin.
+
+.. _pytest: https://docs.pytest.org/en/latest/
+.. _pytest-asyncio: https://github.com/pytest-dev/pytest-asyncio
+
 
 Generating an exception:
 
@@ -96,3 +100,4 @@ Generating an exception:
             await my_mock()
 
         my_mock.assert_called()
+

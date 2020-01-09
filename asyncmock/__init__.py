@@ -59,9 +59,9 @@ class AsyncMock(AsyncCallableMixin, NonCallableMock):
     Create a new `AsyncMock` object. `AsyncMock` several options that extends
     the behaviour of the basic `Mock` object:
 
-    * `is_async`: This is a boolean flag used to indicate when the mock is
-      called if it should return a `asyncio.Future` instance to make the mock
-      awaitable. If this flag is not set the mock reverts to the default
+    * `not_async`: This is a boolean flag used to indicate that when the mock
+      is called it should not return a normal Mock instance to make the mock 
+      non-awaitable. If this flag is set the mock reverts to the default
       behaviour of a `Mock` instance.
 
     All other arguments are passed directly through to the underlying `Mock`

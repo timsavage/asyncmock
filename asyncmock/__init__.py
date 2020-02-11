@@ -1,4 +1,5 @@
 from mock import *
+from mock import CallableMixin, NonCallableMock
 from .__version__ import __version__
 
 __all__ = (

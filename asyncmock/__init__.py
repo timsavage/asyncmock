@@ -1,5 +1,9 @@
 from mock import *
-from mock import CallableMixin, NonCallableMock
+from mock import NonCallableMock
+try:
+    from mock import CallableMixin
+except ImportError:
+    from mock.mock import CallableMixin
 from .__version__ import __version__
 
 __all__ = (
@@ -61,7 +65,7 @@ class AsyncMock(AsyncCallableMixin, NonCallableMock):
     the behaviour of the basic `Mock` object:
 
     * `not_async`: This is a boolean flag used to indicate that when the mock
-      is called it should not return a normal Mock instance to make the mock 
+      is called it should not return a normal Mock instance to make the mock
       non-awaitable. If this flag is set the mock reverts to the default
       behaviour of a `Mock` instance.
 

@@ -4,6 +4,11 @@ Async Mock
 
 Awaitable mocks for async code.
 
+.. highlights::
+   **Not recommended for new projects!**
+ 
+   Mock 4.0+ (included within Python 3.8+) now includes an awaitable mock ``mock.AsyncMock``.   
+      
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
       :alt: Once you go Black...
@@ -26,11 +31,6 @@ Awaitable mocks for async code.
 The package specifically only extends mock_ and not any other part of unittest.
 
 .. _mock: https://mock.readthedocs.io/en/latest/
-
-
-.. note::
-   Mock 4.0+ (included within Python 3.8+) now includes an awaitable mock ``mock.AsyncMock``. 
-   This is recommended for new projects.
 
 
 Installation
